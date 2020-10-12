@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/roleplaygamevanda/precache-manifest.1375a7bf9c759d2997af05c16b89f238.js"
+  "/roleplaygamevanda/precache-manifest.6827d5a803df3b472072ba6225ec5aef.js"
 );
 
 self.addEventListener('message', (event) => {

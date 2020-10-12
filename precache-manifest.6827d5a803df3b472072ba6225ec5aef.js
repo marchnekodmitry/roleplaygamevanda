@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b4897c89c913021d4da4b3ca97a3185d",
+    "revision": "580d8de3991c2112bd1fdaa6a9a28934",
     "url": "/roleplaygamevanda/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/roleplaygamevanda/static/js/2.96ebc064.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "669038a68bd5adac8992",
-    "url": "/roleplaygamevanda/static/js/main.062e020b.chunk.js"
+    "revision": "5a30bcbaee70bbffbc2d",
+    "url": "/roleplaygamevanda/static/js/main.bc58264b.chunk.js"
   },
   {
     "revision": "ee950de07a292aee2625",
