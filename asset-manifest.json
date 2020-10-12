@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/roleplaygamevanda/static/js/main.062e020b.chunk.js",
+    "main.js.map": "/roleplaygamevanda/static/js/main.062e020b.chunk.js.map",
+    "runtime-main.js": "/roleplaygamevanda/static/js/runtime-main.f1a53e1a.js",
+    "runtime-main.js.map": "/roleplaygamevanda/static/js/runtime-main.f1a53e1a.js.map",
+    "static/js/2.96ebc064.chunk.js": "/roleplaygamevanda/static/js/2.96ebc064.chunk.js",
+    "static/js/2.96ebc064.chunk.js.map": "/roleplaygamevanda/static/js/2.96ebc064.chunk.js.map",
+    "index.html": "/roleplaygamevanda/index.html",
+    "precache-manifest.1375a7bf9c759d2997af05c16b89f238.js": "/roleplaygamevanda/precache-manifest.1375a7bf9c759d2997af05c16b89f238.js",
+    "service-worker.js": "/roleplaygamevanda/service-worker.js",
+    "static/js/2.96ebc064.chunk.js.LICENSE.txt": "/roleplaygamevanda/static/js/2.96ebc064.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f1a53e1a.js",
+    "static/js/2.96ebc064.chunk.js",
+    "static/js/main.062e020b.chunk.js"
+  ]
+}
