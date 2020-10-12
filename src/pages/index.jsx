@@ -5,33 +5,49 @@ import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 import { useInput } from '../utils/hooks';
 import vars from '../utils/style/vars';
 
+const getStatModifier = (stat) => {
+  return Math.ceil((stat - 10) / 2);
+};
+
 const columns = [
+  {
+    title: 'Armor class',
+    color: vars.palette.blue_grey,
+    data: ({ dex }) => {
+      return 10 + getStatModifier(dex);
+    },
+  },
+  {
+    title: 'Attack modifier',
+    color: vars.palette.pink,
+    data: ({ dex, weaponAbility }) => {
+      return getStatModifier(dex) + weaponAbility;
+    },
+  },
   {
     title: 'Strength',
     color: vars.palette.red,
-    data: ({ str }) => str,
+    data: ({ str }) => getStatModifier(str),
   },
   {
-    title: 'Intelligence',
+    title: 'Cast modifier',
     color: vars.palette.blue,
-    data: ({ int }) => int,
+    data: ({ magicAbility, int }) => {
+      return getStatModifier(int) + magicAbility;
+    },
   },
   {
-    title: 'Dexterity',
+    title: 'Health',
     color: vars.palette.green,
-    data: ({ dex }) => dex,
-  },
-  {
-    title: 'Stamina',
-    color: vars.palette.yellow,
-    data: ({ sta }) => sta,
+    data: ({ end }) => {
+      return 5 * end;
+    },
   },
 ];
 
@@ -46,8 +62,10 @@ const IndexPage = () => {
   const [stats, setStats] = React.useState();
 
   const [count, setCount] = useInput();
-  const [from, setFrom] = useInput();
-  const [to, setTo] = useInput();
+  const [fromStat, setFromStat] = useInput(7);
+  const [toStat, setToStat] = useInput(15);
+  const [fromAbility, setFromAbility] = useInput(0);
+  const [toAbility, setToAbility] = useInput(3);
 
   const generateStatsHandler = React.useCallback(
     (e) => {
@@ -57,24 +75,48 @@ const IndexPage = () => {
 
       for (let i = 0; i < count; i++) {
         newStats.push({
-          str: generateRandomFromRange(from, to),
-          int: generateRandomFromRange(from, to),
-          dex: generateRandomFromRange(from, to),
-          sta: generateRandomFromRange(from, to),
+          int: generateRandomFromRange(fromStat, toStat),
+          str: generateRandomFromRange(fromStat, toStat),
+          end: generateRandomFromRange(fromStat, toStat),
+          dex: generateRandomFromRange(fromStat, toStat),
+          weaponAbility: generateRandomFromRange(fromAbility, toAbility),
+          magicAbility: generateRandomFromRange(fromAbility, toAbility),
         });
       }
 
       setStats(newStats);
     },
-    [count, from, to]
+    [count, fromStat, toStat, fromAbility, toAbility]
   );
 
   return (
     <Wrapper>
       <StyledForm onSubmit={generateStatsHandler}>
         <CountInput label="Count" type="number" onChange={setCount} />
-        <FromInput label="From" type="number" onChange={setFrom} />
-        <ToInput label="To" type="number" onChange={setTo} />
+        <FromInput
+          label="From (main stat)"
+          type="number"
+          onChange={setFromStat}
+          value={fromStat}
+        />
+        <ToInput
+          label="To (main stat)"
+          type="number"
+          onChange={setToStat}
+          value={toStat}
+        />
+        <FromInput
+          label="From (ability)"
+          type="number"
+          onChange={setFromAbility}
+          value={fromAbility}
+        />
+        <ToInput
+          label="To (ability)"
+          type="number"
+          onChange={setToAbility}
+          value={toAbility}
+        />
         <GenereateButton
           onClick={generateStatsHandler}
           variant="outlined"
@@ -123,12 +165,14 @@ const StyledTableRow = styled(TableRow)`
 `;
 
 const HeadTableCell = styled(TableCell)`
+  width: 150px;
   font-weight: bold;
   background-color: ${({ color }) => color};
   color: ${vars.palette.white};
 `;
 
 const StyledTableCell = styled(TableCell)`
+  width: 150px;
   font-size: 16px;
 `;
 
